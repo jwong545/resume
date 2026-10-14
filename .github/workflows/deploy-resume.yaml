@@ -14,19 +14,23 @@ jobs:
 
       - name: Build Web and PDF Layouts (Docker)
         run: |
-          mkdir dist
+          mkdir -p dist
           
-          # 1. Mount your workspace into the official compiler container and build the layouts
-          # Generates VSCode dark mode layout for web, and crisp minimal corporate style for the PDF
+          # 1. Compile the developer-focused VSCode web layout
           docker run --rm -v $(pwd):/home/yamlresume yamlresume/yamlresume build resume.yaml -o dist/index.html -t vscode
-          docker run --rm -v $(pwd):/home/yamlresume yamlresume/yamlresume build resume.yaml -o dist/resume.pdf -t minimal
+          # Instantly reset file ownership so subsequent tasks don't lock up
+          sudo chown -R $USER:$USER dist
           
-          # 2. Append the target domain redirection pattern rules file
+          # 2. Compile the clean, corporate-grade PDF structure
+          docker run --rm -v $(pwd):/home/yamlresume yamlresume/yamlresume build resume.yaml -o dist/resume.pdf -t minimal
+          sudo chown -R $USER:$USER dist
+          
+          # 3. Append the target domain redirection pattern rules file
           echo "/pdf /resume.pdf 302" > dist/_redirects
 
-      # 3. Direct secure static deployment up to your Cloudflare Pages account
+      # 4. Direct secure static deployment up to your Cloudflare Pages account
       - name: Direct Deploy to Cloudflare Pages
         run: npx wrangler pages deploy dist --project-name=resume
         env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLRE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
