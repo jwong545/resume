@@ -1,0 +1,9 @@
+# Block Wrangler configuration, logs, and authentication states
+.wrangler/
+wrangler-*.log
+.env
+.env.local
+
+# Block your locally generated build folders
+dist/
+node_modules/
