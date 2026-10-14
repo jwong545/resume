@@ -17,20 +17,25 @@ jobs:
           mkdir -p dist
           
           # 1. Compile the developer-focused VSCode web layout
-          docker run --rm -v $(pwd):/home/yamlresume yamlresume/yamlresume build resume.yaml -o dist/index.html -t vscode
-          # Instantly reset file ownership so subsequent tasks don't lock up
-          sudo chown -R $USER:$USER dist
-          
+          # Note: The CLI uses a layout schema inside the resume configuration, 
+          # but we can pass template overrides natively via standard Docker image arguments.
+          docker run --rm \
+            -u $(id -u):$(id -g) \
+            -v $(pwd):/home/yamlresume \
+            yamlresume/yamlresume build resume.yaml -o dist/index.html
+            
           # 2. Compile the clean, corporate-grade PDF structure
-          docker run --rm -v $(pwd):/home/yamlresume yamlresume/yamlresume build resume.yaml -o dist/resume.pdf -t minimal
-          sudo chown -R $USER:$USER dist
-          
-          # 3. Append the target domain redirection pattern rules file
+          docker run --rm \
+            -u $(id -u):$(id -g) \
+            -v $(pwd):/home/yamlresume \
+            yamlresume/yamlresume build resume.yaml -o dist/resume.pdf
+            
+          # 3. Create the direct download route file for Cloudflare Pages
           echo "/pdf /resume.pdf 302" > dist/_redirects
 
       # 4. Direct secure static deployment up to your Cloudflare Pages account
       - name: Direct Deploy to Cloudflare Pages
         run: npx wrangler pages deploy dist --project-name=resume
         env:
-          CLRE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
