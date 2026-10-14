@@ -22,19 +22,17 @@ jobs:
         run: |
           mkdir -p dist
           
-          # 1. Compile the developer-focused VSCode layout EXACTLY as index.html
+          # 1. Mount and compile your resume data via Docker
+          # The compiler automatically outputs "resume.html" and "resume.pdf" inside the dist/ directory
           docker run --rm \
             -u $(id -u):$(id -g) \
             -v $(pwd):/home/yamlresume \
-            yamlresume/yamlresume build resume.yaml -o dist/index.html
+            yamlresume/yamlresume build resume.yaml -o dist
             
-          # 2. Compile your corporate minimalist download asset
-          docker run --rm \
-            -u $(id -u):$(id -g) \
-            -v $(pwd):/home/yamlresume \
-            yamlresume/yamlresume build resume.yaml -o dist/resume.pdf
+          # 2. Rename resume.html to index.html so Cloudflare can find your homepage
+          mv dist/resume.html dist/index.html
             
-          # 3. Establish the clean custom URL routing rules shortcut file
+          # 3. Create a clean redirect mapping shortcut for resume.jwong.org/pdf
           echo "/pdf /resume.pdf 302" > dist/_redirects
 
       # 4. Push production assets out onto your globally routed Cloudflare edge network
