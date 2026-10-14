@@ -40,7 +40,7 @@ jobs:
 
       # 4. Direct secure static deployment up to your Cloudflare Pages account
       - name: Direct Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy dist --project-name=resume
+        run: npx wrangler pages deploy dist --project-name=resume --branch=main
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
