@@ -17,28 +17,27 @@ jobs:
         with:
           node-version: 24
 
+      # Compiles your resume data directly into static web distribution directories
       - name: Build Web and PDF Layouts (Docker)
         run: |
           mkdir -p dist
           
-          # 1. Compile the developer-focused VSCode web layout
-          # Note: The CLI uses a layout schema inside the resume configuration, 
-          # but we can pass template overrides natively via standard Docker image arguments.
+          # 1. Compile the developer-focused VSCode layout EXACTLY as index.html
           docker run --rm \
             -u $(id -u):$(id -g) \
             -v $(pwd):/home/yamlresume \
             yamlresume/yamlresume build resume.yaml -o dist/index.html
             
-          # 2. Compile the clean, corporate-grade PDF structure
+          # 2. Compile your corporate minimalist download asset
           docker run --rm \
             -u $(id -u):$(id -g) \
             -v $(pwd):/home/yamlresume \
             yamlresume/yamlresume build resume.yaml -o dist/resume.pdf
             
-          # 3. Create the direct download route file for Cloudflare Pages
+          # 3. Establish the clean custom URL routing rules shortcut file
           echo "/pdf /resume.pdf 302" > dist/_redirects
 
-      # 4. Direct secure static deployment up to your Cloudflare Pages account
+      # 4. Push production assets out onto your globally routed Cloudflare edge network
       - name: Direct Deploy to Cloudflare Pages
         run: npx wrangler pages deploy dist --project-name=resume --branch=main
         env:
