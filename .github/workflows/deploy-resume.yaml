@@ -12,3 +12,12 @@
 
     # 3. Setup a clean redirect rule for recruiters requesting a direct download path
     echo "/pdf /resume.pdf 302" > dist/_redirects
+
+- name: Deploy to Cloudflare Pages
+  uses: cloudflare/pages-action@v1
+  with:
+    apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    projectName: 'resume' # <-- Must match the Project Name you just set in Cloudflare
+    directory: 'dist'      # <-- Pushes the compiled index.html and resume.pdf folder
+    gitHubToken: ${{ secrets.GITHUB_TOKEN }}
