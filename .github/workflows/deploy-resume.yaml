@@ -1,25 +1,37 @@
-- name: Build PDF and HTML Website (Docker Container)
-  run: |
-    mkdir dist
-    
-    # Pull and spin up the production-ready YAMLResume docker environment
-    # This maps your repository folder to the container to safely render outputs
-    docker run --rm -v $(pwd):/home/yamlresume yamlresume/yamlresume validate resume.yaml
-    
-    # 1. Compile the developer-focused VSCode web layout
-    docker run --rm -v $(pwd):/home/yamlresume yamlresume/yamlresume build resume.yaml -o dist/index.html -t vscode
-    
-    # 2. Compile the clean, corporate-grade PDF structure
-    docker run --rm -v $(pwd):/home/yamlresume yamlresume/yamlresume build resume.yaml -o dist/resume.pdf -t minimal
-    
-    # 3. Setup a clean redirect rule for recruiters requesting a direct download path
-    echo "/pdf /resume.pdf 302" > dist/_redirects
+name: Build and Deploy Resume
 
-- name: Deploy to Cloudflare Pages
-  uses: cloudflare/pages-action@v1
-  with:
-    apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-    accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    projectName: 'resume' # <-- Must match the Project Name you just set in Cloudflare
-    directory: 'dist'      # <-- Pushes the compiled index.html and resume.pdf folder
-    gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 1. Automate your compilation using the official YAMLResume compiler plugin
+      - name: Build PDF and Web Formats
+        uses: yamlresume/action@v0.16.0
+        with:
+          resumes: resume.yaml
+          # Specifies target format paths and layout engine skins
+          outputs: |
+            dist/index.html:vscode
+            dist/resume.pdf:minimal
+
+      # 2. Append the target redirect rule for your custom domain path mapping
+      - name: Create PDF URL Redirect Mapping
+        run: echo "/pdf /resume.pdf 302" > dist/_redirects
+
+      # 3. Securely deploy static build outputs up to your Cloudflare Pages account
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 'resume'
+          directory: 'dist'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
