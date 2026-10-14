@@ -1,4 +1,8 @@
 # Updated on 2026 October 13
+meta:
+  theme: vscode
+  pdf_theme: minimal
+
 name: Jimmy Wong
 title: IT Engineer, Systems / Cloud Engineer
 contact:
