@@ -61,7 +61,6 @@ content:
       keywords:
         - Open Source
         - Cisco
-        - 
 
     - name: Northrop Grumman Corporation (Remote)
       position: Associate PATHWAYS Systems Engineer
@@ -168,7 +167,7 @@ content:
       keywords: [Jira, Confluence, Bitbucket, M365, Microsoft Visio, Cameo]
     - name: Hardware
       level: Advanced
-      keywords: [Client/Server Hardware, Network Cabling, Security Cameras, Hardware Troubleshooting and Repair]
+      keywords: [Client/Server Hardware, Network Cabling, Security Camera, Hardware, Troubleshooting, Repair]
     - name: Core Strengths
       level: Intermediate
       keywords: [Troubleshooting, Technical Documentation, Ticketing, Monitoring, Agile and SAFe]
@@ -180,14 +179,14 @@ content:
     - language: English
       fluency: Native or Bilingual Proficiency
     - language: Cantonese
-      fluency: Native and Elementary Proficiency
+      fluency: Elementary Proficiency
     - language: Mandarin
       fluency: Elementary Proficiency
 
   projects:
     - name: Resume Pipeline
       url: https://github.com/jwong545/resume
-      startDate: 2026
+      startDate: 2026-10
       description: Builds and publishes my resume from a YAML file using GitHub Actions.
       summary: |
         - Generates the resume from a single YAML source, so every update is one commit.
@@ -234,7 +233,7 @@ content:
   publications:
     - name: FCC National Test Lab (Poster)
       publisher: MITRE Project Intern Expo
-      releaseDate: 2019
+      releaseDate: 2019-08
 
 locale:
   language: en
