@@ -1,0 +1,262 @@
+# Updated on 2026 October 14
+
+content:
+  basics:
+    name: Jimmy Wong
+    headline: IT Engineer, Systems / Cloud Engineer
+    email: Jimmy.Wong@jwong.org
+    url: https://jwong.org
+    summary: |
+      IT and systems engineer with 4 years at Northrop Grumman spanning DevOps, network, and systems engineering, with hands-on Linux, Windows, networking, and automation experience and a self-built homelab running redundant services, offsite backups, and self-hosted web apps. Pursuing an M.S. in Information Technology and Management at Illinois Tech (expected May 2028). Seeking a full-time cloud, systems, or infrastructure engineering role starting January 2028. Open to remote, hybrid, or on-site work in Chicago, New York City, Seattle, and Boston, and to relocation within the US.
+  location:
+    city: Chicago
+    region: Illinois
+    country: United States
+  profiles:
+    - network: GitHub
+      username: jwong545
+      url: https://github.com/jwong545
+    - network: LinkedIn
+      username: wongjimmy545
+      url: https://linkedin.com/in/wongjimmy545
+
+  education:
+    - institution: Illinois Institute of Technology
+      degree: Master
+      area: Information Technology and Management (ITM)
+      startDate: 2026-08
+      endDate: 2028-05
+      summary: |
+        - Expected graduation: May 2028
+
+    - institution: Rochester Institute of Technology
+      degree: Bachelor
+      area: Computing and Information Technologies
+      score: "3.7/4.0"
+      startDate: 2017-01
+      endDate: 2020-05
+      summary: |
+        - Graduated Magna Cum Laude
+        - Concentrations: Enterprise Administration; Networking and Communications
+        - Immersion: Cultural Anthropology
+
+    - institution: National Technical Institute for the Deaf (NTID) at Rochester Institute of Technology
+      degree: Associate
+      area: Applied Computer Technology
+      score: "3.7/4.0"
+      startDate: 2015-08
+      endDate: 2018-12
+      summary: |
+        - Graduated Magna Cum Laude
+
+  work:
+    - name: Self-Directed Learning
+      position: Career Break
+      startDate: 2024-09
+      endDate: 2026-08
+      summary: |
+        - Kept technical skills current through hands-on practice with open-source infrastructure tools and self-study of new vendor releases, including Cisco products and AI technologies.
+        - Applied that learning in Homelab v2 (see Projects): self-hosted services on Proxmox VE with HTTPS, firewalling, and automated deployments.
+        - Prepared for graduate study and began the M.S. in Information Technology and Management at Illinois Tech in August 2026.
+      keywords:
+        - Open Source
+        - Cisco
+        - 
+
+    - name: Northrop Grumman Corporation (Remote)
+      position: Associate PATHWAYS Systems Engineer
+      startDate: 2023-09
+      endDate: 2024-09
+      summary: |
+        - Built and published Cameo models and diagrams (model-based systems engineering) after approval from Product Owners and stakeholders, supporting enterprise-wide standardization to optimize cost and time efficiency.
+        - Collaborated biweekly with Subject Matter Experts (SMEs) to refine models and gave Product Owners status updates 2–3 times per month.
+        - Reviewed technical documentation and system architecture diagrams for accuracy and completeness.
+        - Worked within Scaled Agile Framework (SAFe) and Lean-Agile teams to keep deliverables aligned with agile development principles.
+        - Completed training in ServiceNow, Cameo Modeling, SAFe, and Lean-Agile, and received ongoing Cameo and DOORS guidance through weekly office hours and biweekly and monthly SME mentorship.
+      keywords:
+        - Cameo
+        - MBSE
+        - SAFe
+        - DOORS
+        - ServiceNow
+        - Agile
+
+    - name: Northrop Grumman Corporation (Baltimore, Maryland)
+      position: Associate PATHWAYS Systems Engineer (Networks Engineer)
+      startDate: 2021-08
+      endDate: 2023-09
+      summary: |
+        - Operated and maintained LAN, WAN, and VPN infrastructure for seamless connectivity, and monitored and analyzed network performance for short- and long-term strategic planning.
+        - Planned, coordinated, and reconfigured routers, multiplexers, firewalls, hubs, bridges, and gateways supporting data and voice communication networks.
+        - Designed network architectures, selected hardware and software solutions to improve system performance, and maintained network documentation and operational procedures.
+        - Resolved support tickets in ServiceNow with an average resolution time of 1–2 business days.
+        - Managed Return Merchandise Authorization (RMA) requests with a 48-hour turnaround and coordinated third-party maintenance and hardware replacements to minimize downtime.
+        - Replaced end-of-life hardware during off-hours to avoid disruptions, and followed security protocols to wipe and decommission retired equipment before removing it from the asset list.
+      keywords:
+        - LAN/WAN
+        - VPN
+        - Firewalls
+        - Network Monitoring
+        - ServiceNow
+
+    - name: Northrop Grumman Corporation (Linthicum Heights, Maryland)
+      position: Associate PATHWAYS Systems Engineer (DevOpsSec Engineer)
+      startDate: 2020-07
+      endDate: 2021-08
+      summary: |
+        - Deployed and configured new servers, and managed server and switch configurations, updates, and maintenance for reliability.
+        - Developed automation scripts to streamline repetitive processes and improve efficiency.
+        - Conducted server benchmarking to assess performance and optimize system operations.
+        - Designed network and server architectures to meet business requirements.
+        - Diagnosed and resolved hardware and software issues within 1–2 business days, and wrote technical guides for hardware and software management.
+      keywords:
+        - Server Deployment
+        - Automation
+        - Benchmarking
+        - Switch Configuration
+        - Troubleshooting
+
+    - name: MITRE (McLean, Virginia)
+      position: Systems Engineering Intern and Part Time on Call
+      startDate: 2019-06
+      endDate: 2020-01
+      summary: |
+        - Prototyped, developed, and tested Video Relay Services (VRS) and related products in an agile environment.
+        - Analyzed SIP, SDP, and RTP packets with Wireshark to troubleshoot video calls through protocol handshake analysis.
+        - Configured Cisco switches for network test environments, and led a team in learning basic switch configuration and Switched Port Analyzer (SPAN) / port mirroring for traffic monitoring.
+        - Documented technical and administrative procedures for testing, application usage, and continuous VRS monitoring.
+      keywords:
+        - SIP/RTP
+        - Wireshark
+        - Cisco
+        - SPAN
+        - Agile
+
+  certificates:
+    - name: AWS Cloud Practitioner
+      issuer: Amazon Web Services
+      date: 2024-05
+      url: https://cp.certmetrics.com/amazon/en/public/verify/credential/b74d96d86b1843c488e9f3043816846b
+
+  skills:
+    - name: Operating Systems
+      level: Advanced
+      keywords: [Linux, Ubuntu Desktop/Server, Debian, CentOS, Red Hat Enterprise Linux, Windows, macOS]
+    - name: Virtualization and Cloud
+      level: Intermediate
+      keywords: [Proxmox VE, KVM, VMware Workstation, VirtualBox, AWS, Docker]
+    - name: Networking
+      level: Intermediate
+      keywords: [LAN/WAN, VPN, Firewalls, Routers, Managed/Unmanaged Switches, Cisco Switch/Router IOS, pfSense, OPNsense, Ubiquiti, Wireshark]
+    - name: Network Protocols
+      level: Intermediate
+      keywords: [DHCP, DNS, HTTP/HTTPS, FTP/SFTP, SSH, TCP/UDP, SMTP, IMAP, SIP, SDP, RTP, RTSP, ONVIF]
+    - name: Scripting and Languages
+      level: Intermediate
+      keywords: [Bash, PowerShell, Python, Java, PHP, HTML5, CSS3]
+    - name: Automation and DevOps
+      level: Intermediate
+      keywords: [Ansible, GitHub Actions, Git, GitHub, AWS CLI, ServiceNow]
+    - name: Web and Hosting
+      level: Intermediate
+      keywords: [Nginx, Caddy, Apache, Cloudflare, WordPress]
+    - name: Infrastructure Services
+      level: Intermediate
+      keywords: [Samba File Share, Network File Share, CUPS Print Server]
+    - name: Collaboration and Modeling
+      level: Intermediate
+      keywords: [Jira, Confluence, Bitbucket, M365, Microsoft Visio, Cameo]
+    - name: Hardware
+      level: Advanced
+      keywords: [Client/Server Hardware, Network Cabling, Security Cameras, Hardware Troubleshooting and Repair]
+    - name: Core Strengths
+      level: Intermediate
+      keywords: [Troubleshooting, Technical Documentation, Ticketing, Monitoring, Agile and SAFe]
+    - name: Communications
+      level: Advanced
+      keywords: [American Sign Language (ASL)]
+
+  languages:
+    - language: English
+      fluency: Native or Bilingual Proficiency
+    - language: Cantonese
+      fluency: Native and Elementary Proficiency
+    - language: Mandarin
+      fluency: Elementary Proficiency
+
+  projects:
+    - name: Resume Pipeline
+      url: https://github.com/jwong545/resume
+      startDate: 2026
+      description: Builds and publishes my resume from a YAML file using GitHub Actions.
+      summary: |
+        - Generates the resume from a single YAML source, so every update is one commit.
+        - Publishes automatically to resume.jwong.org through Cloudflare Pages.
+      keywords:
+        - GitHub Actions
+        - Cloudflare Pages
+        - YAML
+
+    - name: Homelab v2
+      startDate: 2025-01
+      description: Self-hosted, open-source infrastructure running my portfolio site and intranet, with redundancy and offsite backups.
+      summary: |
+        - Self-host production-style services on open-source infrastructure, including a portfolio site (jwong.org) and an intranet with a dashboard, wiki, and live CTA transit trackers.
+        - Run redundant critical services on Proxmox VE (KVM) so a single node failure does not take them down.
+        - Automate site builds and deployments with GitHub Actions and Cloudflare Pages.
+        - Serve sites over HTTPS using Caddy and Nginx behind Cloudflare, with firewall rules to limit exposure.
+        - Back up data weekly to an offsite location to protect against hardware failure and data loss.
+      keywords:
+        - Proxmox VE
+        - Caddy
+        - Nginx
+        - Cloudflare
+        - HTTPS
+        - DNS
+        - NTP
+
+    - name: Homelab v1
+      startDate: 2020-07
+      endDate: 2024-10
+      description: Home server environment for storage, backup, and self-hosted applications, run with enterprise-style maintenance and monitoring.
+      summary: |
+        - Ran data storage and weekly offsite backups for users to ensure data integrity and disaster recovery.
+        - Hosted and managed self-deployed applications for users, simulating enterprise-level application hosting.
+        - Maintained virtual machines (VMs) and containers, applying the latest security patches and bug fixes.
+        - Sustained 99.99% uptime through proactive server maintenance and monitoring.
+      keywords:
+        - Proxmox VE
+        - Backups
+        - Containers
+        - Monitoring
+        - Nextcloud
+
+  publications:
+    - name: FCC National Test Lab (Poster)
+      publisher: MITRE Project Intern Expo
+      releaseDate: 2019
+
+locale:
+  language: en
+
+layouts:
+  - engine: html
+    template: vscode
+    typography:
+      fontSize: 16px
+
+  - engine: latex
+    template: jake
+    page:
+      paperSize: letter
+      showPageNumbers: false
+      margins: { top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm }
+    typography:
+      fontSize: 10pt
+      lineSpacing: snug
+    sections:
+      order: [basics, education, work, skills, projects, certificates, languages, publications]
+      aliases:
+        work: Experience
+        certificates: Certifications
+        publications: Presentations
