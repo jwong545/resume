@@ -1,0 +1,14 @@
+- name: Build PDF and HTML Website
+  run: |
+    mkdir dist
+    # Validate your data schema before rendering
+    yamlresume validate resume.yaml
+
+    # 1. Compile the developer-focused VSCode web layout (Dayk Theme)
+    yamlresume build resume.yaml -o dist/index.html -t vscode
+
+    # 2. Compile a clean, corporate-grade PDF structure
+    yamlresume build resume.yaml -o dist/resume.pdf -t minimal
+
+    # 3. Setup a clean redirect rule for recruiters requesting a direct download path
+    echo "/pdf /resume.pdf 302" > dist/_redirects
