@@ -12,26 +12,27 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 1. Automate your compilation using the official YAMLResume compiler plugin
-      - name: Build PDF and Web Formats
-        uses: yamlresume/action@v0.16.0
+      - name: Set up Node.js Environment
+        uses: actions/setup-node@v4
         with:
-          resumes: resume.yaml
-          # Specifies target format paths and layout engine skins
-          outputs: |
-            dist/index.html:vscode
-            dist/resume.pdf:minimal
+          node-version: 20
 
-      # 2. Append the target redirect rule for your custom domain path mapping
-      - name: Create PDF URL Redirect Mapping
-        run: echo "/pdf /resume.pdf 302" > dist/_redirects
+      # 1. Compiles the resume formats completely locally using standard npm
+      - name: Build Web and PDF Layouts
+        run: |
+          mkdir dist
+          npm install -g @yamlresume/cli --unsafe-perm
+          
+          # Render the VSCode dark look for web, and minimal style for corporate PDF
+          yamlresume build resume.yaml -o dist/index.html -t vscode
+          yamlresume build resume.yaml -o dist/resume.pdf -t minimal
+          
+          # Inject the clean custom routing file for resume.jwong.org/pdf
+          echo "/pdf /resume.pdf 302" > dist/_redirects
 
-      # 3. Securely deploy static build outputs up to your Cloudflare Pages account
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: 'resume'
-          directory: 'dist'
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      # 2. Deploys natively using Cloudflare's official core wrangler tool directly
+      - name: Direct Deploy to Cloudflare Pages
+        run: npx wrangler pages deploy dist --project-name=resume
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
